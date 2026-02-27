@@ -83,7 +83,7 @@ nav {
   cursor: pointer;
 }
 
-/* Hero Section Ajustada */
+/* Hero*/
 .hero {
   min-height: 80vh;
   display: flex;
@@ -246,7 +246,7 @@ nav {
   font-size: 1.3rem;
 }
 
-
+/* Linha do tempo */
 .timeline {
     border-left: 2px solid var(--primary);
     padding-left: 30px;
@@ -270,7 +270,7 @@ nav {
     border-radius: 50%;
     box-shadow: 0 0 10px var(--primary);
 }
-
+ 
 .date {
     color: var(--primary);
     font-weight: bold;
@@ -287,6 +287,7 @@ nav {
 .timeline-content p {
     color: var(--text-muted);
 }
+
 /* Footer */
 .footer {
   background: #070a13;
