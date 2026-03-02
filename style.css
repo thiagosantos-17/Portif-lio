@@ -191,34 +191,71 @@ nav {
   text-align: center;
 }
 
-/* Projetos 3xN com Botão */
+/* Projetos Grid */
 .project-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 25px;
 }
+
 .project-card {
   background: var(--surface);
   border-radius: 15px;
   overflow: hidden;
   transition: var(--transition);
+
+  display: flex;
+  flex-direction: column;
 }
+
 .project-card:hover {
   transform: translateY(-5px);
 }
+
 .project-img {
   height: 180px;
   background: #252b3d;
+  overflow: hidden;
+  display: flex;
 }
+
+.project-img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  transition: transform 0.5s ease;
+}
+
+.project-card:hover .project-img img {
+  transform: scale(1.1);
+}
+
 .project-info {
   padding: 20px;
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
 }
+
+.project-info h3 {
+  margin-bottom: 10px;
+}
+
+.project-info p {
+  margin-bottom: 20px;
+  color: var(--text-muted);
+  font-size: 0.9rem;
+}
+
 .tech-tags {
-  margin: 15px 0;
+  margin-top: auto;
+  margin-bottom: 15px;
   display: flex;
   gap: 8px;
   flex-wrap: wrap;
 }
+
 .tech-tags span {
   background: rgba(0, 210, 255, 0.1);
   color: var(--primary);
@@ -226,12 +263,15 @@ nav {
   font-size: 0.75rem;
   border-radius: 4px;
 }
+
 .project-links {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-top: 15px;
+  padding-top: 15px;
+  border-top: 1px solid rgba(255, 255, 255, 0.05);
 }
+
 .btn-project {
   background: var(--primary);
   color: #000;
@@ -240,7 +280,13 @@ nav {
   border-radius: 5px;
   font-size: 0.85rem;
   font-weight: bold;
+  transition: 0.3s;
 }
+
+.btn-project:hover {
+  filter: brightness(1.1);
+}
+
 .github-link {
   color: var(--text);
   font-size: 1.3rem;
@@ -248,44 +294,44 @@ nav {
 
 /* Linha do tempo */
 .timeline {
-    border-left: 2px solid var(--primary);
-    padding-left: 30px;
-    max-width: 800px;
-    margin: 0 auto;
-    position: relative;
+  border-left: 2px solid var(--primary);
+  padding-left: 30px;
+  max-width: 800px;
+  margin: 0 auto;
+  position: relative;
 }
 
 .timeline-item {
-    position: relative;
-    margin-bottom: 50px;
+  position: relative;
+  margin-bottom: 50px;
 }
 
 .timeline-dot {
-    position: absolute;
-    left: -39px;
-    top: 5px;
-    width: 16px;
-    height: 16px;
-    background: var(--primary);
-    border-radius: 50%;
-    box-shadow: 0 0 10px var(--primary);
+  position: absolute;
+  left: -39px;
+  top: 5px;
+  width: 16px;
+  height: 16px;
+  background: var(--primary);
+  border-radius: 50%;
+  box-shadow: 0 0 10px var(--primary);
 }
- 
+
 .date {
-    color: var(--primary);
-    font-weight: bold;
-    font-size: 0.9rem;
-    display: block;
-    margin-bottom: 5px;
+  color: var(--primary);
+  font-weight: bold;
+  font-size: 0.9rem;
+  display: block;
+  margin-bottom: 5px;
 }
 
 .timeline-content h3 {
-    font-size: 1.3rem;
-    margin-bottom: 10px;
+  font-size: 1.3rem;
+  margin-bottom: 10px;
 }
 
 .timeline-content p {
-    color: var(--text-muted);
+  color: var(--text-muted);
 }
 
 /* Footer */
