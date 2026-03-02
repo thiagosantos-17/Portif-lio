@@ -1,60 +1,89 @@
 // Menu Mobile
-const menuToggle = document.getElementById('mobile-menu');
-const navMenu = document.getElementById('nav-menu');
-const icon = menuToggle.querySelector('i');
+const menuToggle = document.getElementById("mobile-menu");
+const navMenu = document.getElementById("nav-menu");
+const icon = menuToggle.querySelector("i");
 
 // Função única para abrir e fechar o menu
 function toggleMenu() {
-    navMenu.classList.toggle('active');
-    icon.classList.toggle('fa-bars');
-    icon.classList.toggle('fa-xmark');
+  navMenu.classList.toggle("active");
+  icon.classList.toggle("fa-bars");
+  icon.classList.toggle("fa-xmark");
 }
 
 // 1. Abrir/Fechar ao clicar no botão hambúrguer
-menuToggle.addEventListener('click', (e) => {
-    e.stopPropagation(); // Evita que o clique feche o menu imediatamente
-    toggleMenu();
+menuToggle.addEventListener("click", (e) => {
+  e.stopPropagation(); // Evita que o clique feche o menu imediatamente
+  toggleMenu();
 });
 
 // 2. Fechar ao clicar em qualquer link do menu
-document.querySelectorAll('.nav-menu a').forEach(link => {
-    link.addEventListener('click', () => {
-        if(navMenu.classList.contains('active')) toggleMenu();
-    });
+document.querySelectorAll(".nav-menu a").forEach((link) => {
+  link.addEventListener("click", () => {
+    if (navMenu.classList.contains("active")) toggleMenu();
+  });
 });
 
 // 3. Fechar ao clicar em qualquer lugar FORA do menu
-window.addEventListener('click', (e) => {
-    // Se o menu está aberto E o clique não foi dentro do menu E nem no botão hambúrguer
-    if (navMenu.classList.contains('active') && !navMenu.contains(e.target) && e.target !== menuToggle) {
-        toggleMenu();
-    }
+window.addEventListener("click", (e) => {
+  // Se o menu está aberto E o clique não foi dentro do menu E nem no botão hambúrguer
+  if (
+    navMenu.classList.contains("active") &&
+    !navMenu.contains(e.target) &&
+    e.target !== menuToggle
+  ) {
+    toggleMenu();
+  }
 });
 
 // 4. Fechar automaticamente ao rolar a página (Opcional, mas melhora a UX)
-window.addEventListener('scroll', () => {
-    if (navMenu.classList.contains('active')) {
-        toggleMenu();
-    }
+window.addEventListener("scroll", () => {
+  if (navMenu.classList.contains("active")) {
+    toggleMenu();
+  }
 });
 
 // Fecha menu ao clicar nos links
-document.querySelectorAll('.nav-menu a').forEach(link => {
-    link.addEventListener('click', () => {
-        navMenu.classList.remove('active');
-        const icon = menuToggle.querySelector('i');
-        icon.classList.add('fa-bars');
-        icon.classList.remove('fa-xmark');
-    });
+document.querySelectorAll(".nav-menu a").forEach((link) => {
+  link.addEventListener("click", () => {
+    navMenu.classList.remove("active");
+    const icon = menuToggle.querySelector("i");
+    icon.classList.add("fa-bars");
+    icon.classList.remove("fa-xmark");
+  });
 });
 
 // Revelação ao Scroll
-const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-        if (entry.isIntersecting) {
-            entry.target.classList.add('active');
-        }
+const observer = new IntersectionObserver(
+  (entries) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add("active");
+      }
     });
-}, { threshold: 0.1 });
+  },
+  { threshold: 0.1 }
+);
 
-document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+document.querySelectorAll(".reveal").forEach((el) => observer.observe(el));
+
+// Lógica do Modal de Contato
+const modal = document.getElementById("contact-modal");
+const closeModal = document.querySelector(".close-modal");
+
+// Seleciona TODOS os links que apontam para #contact
+document.querySelectorAll('a[href="#contact"]').forEach((link) => {
+  link.addEventListener("click", (e) => {
+    e.preventDefault(); // Impede a página de pular
+    modal.style.display = "flex";
+  });
+});
+
+// Fecha ao clicar no X
+closeModal.onclick = () => (modal.style.display = "none");
+
+// Fecha ao clicar fora do modal (no fundo escuro)
+window.onclick = (event) => {
+  if (event.target == modal) {
+    modal.style.display = "none";
+  }
+};
