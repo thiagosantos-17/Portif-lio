@@ -22,9 +22,10 @@ body {
   line-height: 1.6;
 }
 .container {
-  max-width: 1200px;
+  width: 100%;
+  max-width: 1440px; 
   margin: 0 auto;
-  padding: 0 5%;
+  padding: 0 3%; 
 }
 .section {
   padding: 80px 0;
@@ -510,3 +511,4 @@ nav {
   opacity: 1;
   transform: translateY(0);
 }
+
